@@ -1,7 +1,8 @@
 import axios from "axios";
 import configObj from "../src/config";
+const ENDPOINT = "parameters";
 
-const parametersURL = "https://sandbox.alloy.co/v1/parameters";
+const url = configObj.baseUrl + ENDPOINT;
 
 const getParams = async (url: string): Promise<void> => {
     const response = await axios.get(url, {
@@ -18,4 +19,4 @@ const getParams = async (url: string): Promise<void> => {
     console.log("Optional fields: ", optionalFields);
 }
 
-getParams(parametersURL);
+getParams(url);
