@@ -17,7 +17,7 @@ const bodyObj = {
     "address_postal_code": "23220",
     "address_country_code": "US",
     "social_twitter": "dog_rates"
-}
+};
 
 const postEval = async (url: string): Promise<void> => {
     const response = await axios.post(url, JSON.stringify(bodyObj), {
@@ -27,7 +27,26 @@ const postEval = async (url: string): Promise<void> => {
         }
     });
 
-    console.log(response.data.summary.result);
-}
+    const evaluationToken = response.data.evaluation_token;
+
+    console.log(response.data.evaluation_token);
+    patchEval(url, evaluationToken);
+};
 
 postEval(url);
+
+// Doesn't seem to be working...
+const patchEval = async (url: string, token: string): Promise<void> => {
+    
+    const response = await axios.patch(url + "/" + token, JSON.stringify({
+        "name_first": "Steve",
+        "last_name": "Giordano"
+    }), {
+        headers: {
+            "Authorization": configObj.authorization,
+            "Content-Type": "application/json"
+        }
+    });
+
+    console.log(response);
+};

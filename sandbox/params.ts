@@ -17,6 +17,6 @@ const getParams = async (url: string): Promise<void> => {
 
     console.log("Required fields: ", requiredFields);
     console.log("Optional fields: ", optionalFields);
-}
+};
 
 getParams(url);

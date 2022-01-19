@@ -2,17 +2,17 @@
   "name": "api101",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "server.ts",
   "scripts": {
-    "commit": "git init && git status && git add . && git commit -m $MSG && git push"  
+    "commit": "git init && git status && git add . && git commit -m $MSG && git push"
   },
-  "author": "",
+  "author": "Steve Giordano",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.25.0",
     "dotenv": "^14.2.0",
     "express": "^4.17.2",
-    "node-fetch": "^3.1.1"
+    "form-data": "^4.0.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.13",
