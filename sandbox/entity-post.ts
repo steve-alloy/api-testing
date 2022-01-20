@@ -1,6 +1,5 @@
 import fs from "node:fs";
 import axios from "axios";
-import FormData, { from } from "form-data";
 
 import configObj from "../src/config";
 
@@ -11,7 +10,7 @@ const url = configObj.baseUrl + ENDPOINT;
 
 const bodyObj = {
     "name": "driver_license",
-    "extension": "png",
+    "extension": "jpg",
     "type": "license"
 };
 
@@ -25,21 +24,17 @@ const postEntity = async (url: string, token: string): Promise<void> => {
     });
 
     const documentToken = response.data.document_token;
-
-    const form = new FormData();
-    const stream = fs.createReadStream("../images/photo.png");
-    form.append("file", stream);
-
+    const data = fs.readFileSync("../images/license.jpg");
     const entityUrlWithDocumentToken = `${url}/${token}/documents/${documentToken}`;
 
-    const formResponse = await axios.put(entityUrlWithDocumentToken, form, {
+    const formResponse = await axios.put(entityUrlWithDocumentToken, data, {
         headers: {
-            "Authorization": configObj.authorization,
-            ...form.getHeaders()
+            "Content-Type": "application/octet-stream",
+            "Authorization": configObj.authorization
         }
     });
     
-    console.log(formResponse);
+    console.log(formResponse.data);
 };
 
 postEntity(url, ENTITY_TOKEN);

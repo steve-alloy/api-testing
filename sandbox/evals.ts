@@ -29,8 +29,8 @@ const postEval = async (url: string): Promise<void> => {
 
     const evaluationToken = response.data.evaluation_token;
 
-    console.log(response.data.evaluation_token);
-    patchEval(url, evaluationToken);
+    console.log(response.data);
+    // patchEval(url, evaluationToken);
 };
 
 postEval(url);
