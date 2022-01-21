@@ -74,6 +74,7 @@
     }
   },
   "eslintIgnore": [
-    "tests/"
+    "tests/",
+    "sandbox/"
   ]
 }

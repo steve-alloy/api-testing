@@ -1,5 +1,5 @@
 import axios from "axios";
-import configObj from "../src/config";
+import configObj from "../configs/config";
 const ENDPOINT = "evaluations";
 
 const url = configObj.baseUrl + ENDPOINT;
